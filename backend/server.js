@@ -21,6 +21,45 @@ app.delete('/api/data/:id', deleteData);
 app.post('/api/data/delete', deleteRows);
 app.post('/api/email', sendEmail);
 
+// app.post('/api/email', async (req, res) => {
+// 	try {
+// 		const { rows } = req.body;
+// 		const data = await Data.find({ _id: { $in: rows } });
+// 		const emailContent = data
+// 			.map((item) => {
+// 				return `
+//         Name: ${item.name}
+//         Phone Number: ${item.phoneNumber}
+//         Email: ${item.email}
+//         Hobbies: ${item.hobbies}
+//         ------------------------------
+//       `;
+// 			})
+// 			.join('');
+
+// 		const transporter = nodemailer.createTransport({
+// 			service: 'gmail',
+// 			auth: {
+// 				user: process.env.EMAIL_USER,
+// 				pass: process.env.EMAIL_PASSWORD
+// 			}
+// 		});
+
+// 		const mailOptions = {
+// 			from: process.env.EMAIL_USER,
+// 			to: 'jainkushagra582@gmail.com',
+// 			subject: 'Selected Data',
+// 			text: emailContent
+// 		};
+
+// 		await transporter.sendMail(mailOptions);
+// 		res.status(200).send();
+// 	} catch (error) {
+// 		console.error('Error sending email:', error);
+// 		res.status(500).json({ error: 'Internal Server Error' });
+// 	}
+// });
+
 // Start the server
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);

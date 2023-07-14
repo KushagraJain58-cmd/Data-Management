@@ -1,4 +1,5 @@
 const Data = require('../models/dataModel');
+const nodemailer = require('nodemailer');
 
 const getData = async (req, res) => {
 	try {
@@ -58,8 +59,22 @@ const sendEmail = async (req, res) => {
 			})
 			.join('');
 
-		// Code for sending email
+		const transporter = nodemailer.createTransport({
+			service: 'gmail',
+			auth: {
+				user: process.env.EMAIL_USER,
+				pass: process.env.EMAIL_PASSWORD
+			}
+		});
 
+		const mailOptions = {
+			from: process.env.EMAIL_USER,
+			to: 'info@redpositive.in',
+			subject: 'Selected Data',
+			text: emailContent
+		};
+
+		await transporter.sendMail(mailOptions);
 		res.status(200).send();
 	} catch (error) {
 		console.error('Error sending email:', error);
