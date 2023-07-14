@@ -1,14 +1,14 @@
 # Data-Management
 
-##CRUDS(Create, Read, Update, Delete and Send)
+## CRUDS(Create, Read, Update, Delete and Send)
 
-###Task Instructions:
+### Task Instructions:
 
 Create a UI based on your imagination using any frontend you know
 This UI will contain form + a table + buttons(update, delete, add
 Form will contain 4 fields:
-Name
-Phone number
+Name <br>
+Phone number <br>
 Email
 hobbies
 Save button
